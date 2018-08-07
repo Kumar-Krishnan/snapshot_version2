@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_175037) do
+ActiveRecord::Schema.define(version: 2018_08_07_181454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 2018_08_07_175037) do
     t.index ["test_id"], name: "index_snaps_tests_on_test_id"
   end
 
+  create_table "test_scores", force: :cascade do |t|
+    t.integer "score_total"
+    t.bigint "snap_id"
+    t.bigint "test_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["snap_id"], name: "index_test_scores_on_snap_id"
+    t.index ["test_id"], name: "index_test_scores_on_test_id"
+    t.index ["user_id"], name: "index_test_scores_on_user_id"
+  end
+
   create_table "tests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -74,4 +86,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_175037) do
   add_foreign_key "snaps", "users"
   add_foreign_key "snaps_tests", "snaps"
   add_foreign_key "snaps_tests", "tests"
+  add_foreign_key "test_scores", "snaps"
+  add_foreign_key "test_scores", "tests"
+  add_foreign_key "test_scores", "users"
 end

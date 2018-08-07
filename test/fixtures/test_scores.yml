@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score_total: 1
+  snap: one
+  test: one
+  user: one
+
+two:
+  score_total: 1
+  snap: two
+  test: two
+  user: two
