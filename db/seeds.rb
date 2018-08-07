@@ -1,102 +1,163 @@
 User.destroy_all
 Snap.destroy_all
-Mood.destroy_all
+Test.destroy_all
+Question.destroy_all
+Answer.destroy_all
 TestScore.destroy_all
 
 
+beck_dep_inventory = Test.new
+beck_dep_inventory.name = "Beck Depression Inventory"
+beck_dep_inventory.save
 
-depression = Mood.new
-depression.name = "Depression"
-depression.save
+beck_question_1 = Question.new
+beck_question_1.question_text = "1"
+beck_question_1.test_id = beck_dep_inventory.id
+beck_question_1.save
 
-anxiety = Mood.new
-anxiety.name = "Anxiety"
-anxiety.save
+beck_question_1.answers.create(answer_text: "I do not feel sad.", answer_value: 0)
+beck_question_1.answers.create(answer_text: "I feel sad.", answer_value: 1)
+beck_question_1.answers.create(answer_text: "I am sad all the time and I can't snap out of it.", answer_value: 2)
+beck_question_1.answers.create(answer_text: "I am so sad and unhappy that I can't stand it.", answer_value: 3)
+
+beck_question_2 = Question.new
+beck_question_2.question_text = "2"
+beck_question_2.test_id = beck_dep_inventory.id
+beck_question_2.save
+
+beck_question_2.answers.create(answer_text: "I am not particularly discouraged about the future. ", answer_value: 0)
+beck_question_2.answers.create(answer_text: "I feel discouraged about the future. ", answer_value: 1)
+beck_question_2.answers.create(answer_text: "I feel I have nothing to look forward to.", answer_value: 2)
+beck_question_2.answers.create(answer_text: "I feel the future is hopeless and that things cannot improve.", answer_value: 3)
+
+beck_question_3 = Question.new
+beck_question_3.question_text = "3"
+beck_question_3.test_id = beck_dep_inventory.id
+beck_question_3.save
+
+beck_question_3.answers.create(answer_text: "I do not feel like a failure. ", answer_value: 0)
+beck_question_3.answers.create(answer_text: "I feel I have failed more than the average person.", answer_value: 1)
+beck_question_3.answers.create(answer_text: "As I look back on my life, all I can see is a lot of failures.", answer_value: 2)
+beck_question_3.answers.create(answer_text: "I feel I am a complete failure as a person.", answer_value: 3)
+
+beck_question_4 = Question.new
+beck_question_4.question_text = "4"
+beck_question_4.test_id = beck_dep_inventory.id
+beck_question_4.save
+
+beck_question_4.answers.create(answer_text: "I get as much satisfaction out of things as I used to.", answer_value: 0)
+beck_question_4.answers.create(answer_text: "I don't enjoy things the way I used to. ", answer_value: 1)
+beck_question_4.answers.create(answer_text: "I don't get real satisfaction out of anything anymore. ", answer_value: 2)
+beck_question_4.answers.create(answer_text: "I am dissatisfied or bored with everything.", answer_value: 3)
+
+beck_question_5 = Question.new
+beck_question_5.question_text = "5"
+beck_question_5.test_id = beck_dep_inventory.id
+beck_question_5.save
+
+beck_question_5.answers.create(answer_text: "I don't feel particularly guilty", answer_value: 0)
+beck_question_5.answers.create(answer_text: "I feel guilty a good part of the time. ", answer_value: 1)
+beck_question_5.answers.create(answer_text: "I feel quite guilty most of the time.", answer_value: 2)
+beck_question_5.answers.create(answer_text: "I feel guilty all of the time. ", answer_value: 3)
+
+social_interaction_anxiety = Test.new
+social_interaction_anxiety.name = "Beck Depression Inventory"
+social_interaction_anxiety.save
+
+social_interaction_anxiety_question_1 = Question.new
+social_interaction_anxiety_question_1.question_text = "I get nervous if I have to speak with someone in authority (teacher, boss)."
+social_interaction_anxiety_question_1.test_id = social_interaction_anxiety.id
+social_interaction_anxiety_question_1.save
+
+social_interaction_anxiety_question_1.answers.create(answer_text: "NOT AT ALL", answer_value: 0)
+social_interaction_anxiety_question_1.answers.create(answer_text: "SLIGHTLY", answer_value: 1)
+social_interaction_anxiety_question_1.answers.create(answer_text: "MODERATELY", answer_value: 2)
+social_interaction_anxiety_question_1.answers.create(answer_text: "VERY", answer_value: 3)
+social_interaction_anxiety_question_1.answers.create(answer_text: "EXTREMELY", answer_value: 4)
+
+
+social_interaction_anxiety_question_2 = Question.new
+social_interaction_anxiety_question_2.question_text = "I have difficulty making eye contact with others."
+social_interaction_anxiety_question_2.test_id = social_interaction_anxiety.id
+social_interaction_anxiety_question_2.save
+
+social_interaction_anxiety_question_2.answers.create(answer_text: "NOT AT ALL", answer_value: 0)
+social_interaction_anxiety_question_2.answers.create(answer_text: "SLIGHTLY", answer_value: 1)
+social_interaction_anxiety_question_2.answers.create(answer_text: "MODERATELY", answer_value: 2)
+social_interaction_anxiety_question_2.answers.create(answer_text: "VERY", answer_value: 3)
+social_interaction_anxiety_question_2.answers.create(answer_text: "EXTREMELY", answer_value: 4)
+
+
+social_interaction_anxiety_question_3 = Question.new
+social_interaction_anxiety_question_3.question_text = "I become tense if I have to talk about myself or my feelings."
+social_interaction_anxiety_question_3.test_id = social_interaction_anxiety.id
+social_interaction_anxiety_question_3.save
+
+social_interaction_anxiety_question_3.answers.create(answer_text: "NOT AT ALL", answer_value: 0)
+social_interaction_anxiety_question_3.answers.create(answer_text: "SLIGHTLY", answer_value: 1)
+social_interaction_anxiety_question_3.answers.create(answer_text: "MODERATELY", answer_value: 2)
+social_interaction_anxiety_question_3.answers.create(answer_text: "VERY", answer_value: 3)
+social_interaction_anxiety_question_3.answers.create(answer_text: "EXTREMELY", answer_value: 4)
+
+
+social_interaction_anxiety_question_4 = Question.new
+social_interaction_anxiety_question_4.question_text = "I find it difficult to mix comfortably with the people I work with."
+social_interaction_anxiety_question_4.test_id = social_interaction_anxiety.id
+social_interaction_anxiety_question_4.save
+
+social_interaction_anxiety_question_4.answers.create(answer_text: "NOT AT ALL", answer_value: 0)
+social_interaction_anxiety_question_4.answers.create(answer_text: "SLIGHTLY", answer_value: 1)
+social_interaction_anxiety_question_4.answers.create(answer_text: "MODERATELY", answer_value: 2)
+social_interaction_anxiety_question_4.answers.create(answer_text: "VERY", answer_value: 3)
+social_interaction_anxiety_question_4.answers.create(answer_text: "EXTREMELY", answer_value: 4)
+
+
+social_interaction_anxiety_question_5 = Question.new
+social_interaction_anxiety_question_5.question_text = "I find it easy to make friends my own age."
+social_interaction_anxiety_question_5.test_id = social_interaction_anxiety.id
+social_interaction_anxiety_question_5.save
+
+social_interaction_anxiety_question_5.answers.create(answer_text: "NOT AT ALL", answer_value: 0)
+social_interaction_anxiety_question_5.answers.create(answer_text: "SLIGHTLY", answer_value: 1)
+social_interaction_anxiety_question_5.answers.create(answer_text: "MODERATELY", answer_value: 2)
+social_interaction_anxiety_question_5.answers.create(answer_text: "VERY", answer_value: 3)
+social_interaction_anxiety_question_5.answers.create(answer_text: "EXTREMELY", answer_value: 4)
+
 
 dostoevsky = User.new
 dostoevsky.name = "Fyodor Dostoevsky"
-dostoevsky.age = 60
-dostoevsky.gender = 2
+dostoevsky.age = 45
 dostoevsky.save
 
-young_dos_man = Snap.new
-young_dos_man.user_id = dostoevsky.id
-young_dos_man.save
+dostoevsky1 = Snap.new
+dostoevsky1.user_id = dostoevsky.id
 
-young_dos_man_dep_score = TestScore.new
-young_dos_man_dep_score.score = 10
-young_dos_man_dep_score.mood_id = depression.id
-young_dos_man_dep_score.snap_id = young_dos_man.id
-young_dos_man_dep_score.user_id = dostoevsky.id
-young_dos_man_dep_score.save
+first_first_beck_answer = Answer.where(question_id: beck_question_1.id, answer_value: 3)
+first_second_beck_answer = Answer.where(question_id: beck_question_2.id, answer_value: 3)
+first_third_beck_answer = Answer.where(question_id: beck_question_3.id, answer_value: 3)
+first_fourth_beck_answer = Answer.where(question_id: beck_question_4.id, answer_value: 3)
 
-young_dos_man_anx_score = TestScore.new
-young_dos_man_anx_score.score = 10
-young_dos_man_anx_score.mood_id = anxiety.id
-young_dos_man_anx_score.snap_id = young_dos_man.id
-young_dos_man_anx_score.user_id = dostoevsky.id
-young_dos_man_anx_score.save
+dostoevsky1.answers << first_first_beck_answer
+dostoevsky1.answers << first_second_beck_answer
+dostoevsky1.answers << first_third_beck_answer
+dostoevsky1.answers << first_fourth_beck_answer
+dostoevsky1.save
 
-old_dos_dude = Snap.new
-old_dos_dude.user_id = dostoevsky.id
-old_dos_dude.save
+dostoevsky2 = Snap.new
+dostoevsky2.user_id = dostoevsky.id
 
-old_dos_dude_dep_score = TestScore.new
-old_dos_dude_dep_score.score = 3
-old_dos_dude_dep_score.mood_id = depression.id
-old_dos_dude_dep_score.snap_id = old_dos_dude.id
-old_dos_dude_dep_score.user_id = dostoevsky.id
-old_dos_dude_dep_score.save
+second_first_beck_answer = Answer.where(question_id: beck_question_1.id, answer_value: 1)
+second_second_beck_answer = Answer.where(question_id: beck_question_2.id, answer_value: 1)
+second_third_beck_answer = Answer.where(question_id: beck_question_3.id, answer_value: 1)
+second_fourth_beck_answer = Answer.where(question_id: beck_question_4.id, answer_value: 1)
 
-old_dos_dude_anx_score = TestScore.new
-old_dos_dude_anx_score.score = 3
-old_dos_dude_anx_score.mood_id = anxiety.id
-old_dos_dude_anx_score.snap_id = old_dos_dude.id
-old_dos_dude_anx_score.user_id = dostoevsky.id
-old_dos_dude_anx_score.save
+dostoevsky2.answers << second_first_beck_answer
+dostoevsky2.answers << second_second_beck_answer
+dostoevsky2.answers << second_third_beck_answer
+dostoevsky2.answers << second_fourth_beck_answer
+dostoevsky2.save
 
 
-franklin = User.new
-franklin.name = "Benjamin Franklin"
-franklin.age = 60
-franklin.gender = 2
-franklin.save
-
-young_franklin_bro = Snap.new
-young_franklin_bro.user_id = franklin.id
-young_franklin_bro.save
-
-young_franklin_bro_dep_score = TestScore.new
-young_franklin_bro_dep_score.score = 1
-young_franklin_bro_dep_score.mood_id = depression.id
-young_franklin_bro_dep_score.snap_id = young_franklin_bro.id
-young_franklin_bro_dep_score.user_id = franklin.id
-young_franklin_bro_dep_score.save
-
-young_franklin_bro_anx_score = TestScore.new
-young_franklin_bro_anx_score.score = 1
-young_franklin_bro_anx_score.mood_id = anxiety.id
-young_franklin_bro_anx_score.snap_id = young_franklin_bro.id
-young_franklin_bro_anx_score.user_id = franklin.id
-young_franklin_bro_anx_score.save
-
-old_franklin_g = Snap.new
-old_franklin_g.user_id = franklin.id
-old_franklin_g.save
-
-old_franklin_g_dep_score = TestScore.new
-old_franklin_g_dep_score.score = 3
-old_franklin_g_dep_score.mood_id = depression.id
-old_franklin_g_dep_score.snap_id = old_franklin_g.id
-old_franklin_g_dep_score.user_id = franklin.id
-old_franklin_g_dep_score.save
-
-old_franklin_g_anx_score = TestScore.new
-old_franklin_g_anx_score.score = 3
-old_franklin_g_anx_score.mood_id = anxiety.id
-old_franklin_g_anx_score.snap_id = old_franklin_g.id
-old_franklin_g_anx_score.user_id = franklin.id
-old_franklin_g_anx_score.save
 
 
 
