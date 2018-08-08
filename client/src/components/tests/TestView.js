@@ -29,12 +29,17 @@ class TestView extends Component {
             
                 <div>
                     {this.props.test.name}  
-                    <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
-                        <h4> Take Test</h4>
-                    </Link>
+                    {
+                        !this.state.testScoreExists ?
+                            <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
+                                <h4> Take Test</h4>
+                            </Link>
+                        :null
+                    }
+                    
                     {
                         this.state.testScoreExists ?
-                        <h5>{this.state.testScore.score_total}</h5>
+                            <h5>{this.state.testScore.score_total}</h5>
                         :null
                     }
                 </div>
