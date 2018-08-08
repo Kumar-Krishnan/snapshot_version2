@@ -7,7 +7,7 @@ class QuestionsBuilder extends Component {
             return null
         }
         const questions = this.props.questions.map((question, i)=>{
-            return <QuestionView key={i} question={question} snapId={this.props.snapId}/>
+            return <QuestionView key={i}  order={i+1} question={question} snapId={this.props.snapId}/>
         })
         return (
             
