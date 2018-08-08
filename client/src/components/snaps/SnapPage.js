@@ -22,7 +22,7 @@ class SnapPage extends Component {
     render() {
         return (
             <div>
-                <TestBuilder tests={this.state.tests} snapId={this.props.match.params.id}/>
+                <TestBuilder tests={this.state.tests} userId={this.props.match.params.userId} snapId={this.props.match.params.id}/>
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class TestView extends Component {
 
@@ -11,9 +12,11 @@ class TestView extends Component {
     // }
     render() {
         return (
-            <div>
-              {this.props.test.name}  
-            </div>
+            <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
+                <div>
+                {this.props.test.name}  
+                </div>
+            </Link>
         );
     }
 }

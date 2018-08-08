@@ -7,7 +7,7 @@ class TestBuilder extends Component {
             return null
         }
         const tests = this.props.tests.map((test, i)=>{
-            return <TestView key={i} test={test} snapId={this.props.snapId}/>
+            return <TestView key={i} test={test} userId={this.props.userId} snapId={this.props.snapId}/>
         })
         return (
             <div>
