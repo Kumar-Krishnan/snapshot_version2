@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class TestView extends Component {
 
-    componentDidMount = () =>{
-        // this.fetchTestName()
+    state = {
+        testScore: {
+        },
+        testScoreExists: false
     }
 
-    // fetchTestName = async() =>{
+    componentDidMount = () =>{
+        this.fetchTestScore()
+    }
 
-    // }
+    fetchTestScore = async() =>{
+        let response = await axios.get(`/api/snaps/${this.props.snapId}/${this.props.test.id}/testscore`)
+        let testScore = response.data[0]
+        console.log("test score", response)
+        
+        if (testScore !== undefined){
+            this.setState({testScore})
+            this.setState({testScoreExists: true})
+        }
+    }
     render() {
         return (
-            <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
+            
                 <div>
-                {this.props.test.name}  
+                    {this.props.test.name}  
+                    <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
+                        <h4> Take Test</h4>
+                    </Link>
+                    {
+                        this.state.testScoreExists ?
+                        <h5>{this.state.testScore.score_total}</h5>
+                        :null
+                    }
                 </div>
-            </Link>
+            
         );
     }
 }
