@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import MoodBuilder from '../moods/MoodBuilder';
+import TestBuilder from '../tests/TestBuilder';
 // a
 class SnapPage extends Component {
 
     state ={
-        moods: []
+        tests: []
     }
 
     componentDidMount = () =>{
@@ -13,15 +14,15 @@ class SnapPage extends Component {
     }
 
     fetchAllTests = async() =>{
-        let response = await axios.get(`/api/moods`)
+        let response = await axios.get(`/api/tests`)
         console.log(response.data)
-        this.setState({moods: response.data})
+        this.setState({tests: response.data})
         console.log(this.state.moods)
     }
     render() {
         return (
             <div>
-                <MoodBuilder moods={this.state.moods} snapId={this.props.match.params.id}/>
+                <TestBuilder tests={this.state.tests} snapId={this.props.match.params.id}/>
             </div>
         );
     }

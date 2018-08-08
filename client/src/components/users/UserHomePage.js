@@ -15,12 +15,12 @@ class UserHomePage extends Component {
     state = {
         user: {},
         snaps: [],
-        moods: []
+        // moods: []
     }
 
     componentDidMount = () =>{
         this.fetchUserSnapsAndTests()
-        this.fetchAllMoods()
+        // this.fetchAllMoods()
     }
 
     fetchUserSnapsAndTests = async() =>{
@@ -29,12 +29,12 @@ class UserHomePage extends Component {
         console.log(snaps.data)
     }
 
-    fetchAllMoods = async() =>{
-        let response = await axios.get(`/api/moods`)
-        console.log(response.data)
-        this.setState({moods: response.data})
-        console.log(this.state.moods)
-    }
+    // fetchAllMoods = async() =>{
+    //     let response = await axios.get(`/api/moods`)
+    //     console.log(response.data)
+    //     this.setState({moods: response.data})
+    //     console.log(this.state.moods)
+    // }
 
     createSnap = async(event) =>{
         event.preventDefault()
