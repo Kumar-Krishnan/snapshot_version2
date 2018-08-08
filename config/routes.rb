@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get '/snaps/:snap_id/moods/:mood_id/test_scores', to: 'test_scores#get_by_snap_and_mood'
     post '/snaps/:snap_id/moods/:mood_id/:test_score', to: 'test_scores#save_user_submitted_score'
     get '/users/:user_id/moods/:mood_id/test_scores', to: 'test_scores#get_all_test_scores_for_user' 
+    get '/snaps/:snap_id/questions/:question_id/answer_chosen', to: 'answers#chosen_answer_for_snap'
     resources :users do
       resources :snaps
     end

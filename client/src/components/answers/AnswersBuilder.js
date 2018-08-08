@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import AnswerView from './AnswerView';
 
 class AnswersBuilder extends Component {
+    state ={
+        answerChosen:{}
+    }
+
+    // componentDidMount = () =>{
+    //     this.fetchChosenAnswer()
+    // }
+
+    // fetchChosenAnswer = async() =>{
+        
+    // }
     render() {
         if (this.props.answers === undefined) {
             return null
