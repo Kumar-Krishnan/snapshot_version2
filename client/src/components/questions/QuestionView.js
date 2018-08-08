@@ -4,11 +4,15 @@ import AnswersBuilder from '../answers/AnswersBuilder';
 
 class QuestionView extends Component {
     state = {
-        answers: []
+        answers: [],
+        answerChosen: {
+
+        }
     }
 
     componentDidMount = () =>{
         this.fetchAnswers()
+        this.fetchChosenAnswer()
     }
 
     fetchAnswers = async() =>{
@@ -16,6 +20,12 @@ class QuestionView extends Component {
         let answers = response.data
         this.setState({answers})
         console.log(answers)
+    }
+
+    fetchChosenAnswer = async() =>{
+        let response = await axios.get(`/api/snaps/${this.props.snapId}/questions/${this.props.question.id}/answer_chosen`)
+        let answerChosen = response
+        console.log("chosen answer", answerChosen)
     }
     render() {
         return (
