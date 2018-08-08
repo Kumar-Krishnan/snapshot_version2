@@ -17,7 +17,6 @@ class SnapPage extends Component {
         let response = await axios.get(`/api/tests`)
         console.log(response.data)
         this.setState({tests: response.data})
-        console.log(this.state.moods)
     }
     render() {
         return (
