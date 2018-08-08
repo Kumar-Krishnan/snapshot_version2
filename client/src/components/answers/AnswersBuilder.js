@@ -18,7 +18,7 @@ class AnswersBuilder extends Component {
             return null
         }
         const answers = this.props.answers.map((answer, i)=>{
-            return <AnswerView key={i}  order={i+1} answer={answer}/>
+            return <AnswerView setAnswerClicked={this.props.setAnswerClicked} answerChosen={this.props.answerChosen} key={i}  order={i+1} answer={answer}/>
         })
         return (
             <div>

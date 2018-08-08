@@ -8,7 +8,10 @@ class QuestionView extends Component {
         answerChosen: {
 
         },
-        thereIsAnAnswerChosen: false
+        thereIsAnAnswerChosen: false,
+        answerClicked: {
+
+        }
     }
 
     componentDidMount = () =>{
@@ -21,6 +24,10 @@ class QuestionView extends Component {
         let answers = response.data
         this.setState({answers})
         console.log(answers)
+    }
+
+    setAnswerClicked = (answer) =>{
+        this.setState({answerClicked: answer})
     }
 
     fetchChosenAnswer = async() =>{
@@ -45,7 +52,7 @@ class QuestionView extends Component {
                     :null
                 }
                 
-                <AnswersBuilder answers={this.state.answers}/>
+                <AnswersBuilder setAnswerClicked={this.setAnswerClicked} answerChosen={this.state.thereIsAnAnswerChosen} answers={this.state.answers}/>
             </div>
         );
     }
