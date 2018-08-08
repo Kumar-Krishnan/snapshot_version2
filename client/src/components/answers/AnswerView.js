@@ -23,7 +23,7 @@ class AnswerView extends Component {
                     !this.props.answerChosen ?
                         <ClickableAnswers>
                             <h3 onClick={this.triggerSetAnswerClicked}>{this.props.answer.answer_text}</h3>
-                        </ClickableAnswers>         
+                        </ClickableAnswers>      
                     :null
                 }
                 

@@ -11,5 +11,12 @@ class Api::AnswersController < ApplicationController
         @answer = @snap.answers.where(question_id: @question.id)
         render json: @answer
     end
+
+    def submit_answer_for_snap
+        snap = Snap.find(params[:snap_id])
+        answer = Answer.find(params[:answer_id])
+        snap.answers << answer
+        render json: answer
+    end
 end
 
