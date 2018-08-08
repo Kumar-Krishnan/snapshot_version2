@@ -5,6 +5,7 @@ import UserHomePage from './components/users/UserHomePage';
 import SnapPage from './components/snaps/SnapPage';
 import Example from './components/Graph/Example';
 import MoodGraph from './components/Graph/MoodGraph';
+import TestWithQuestions from './components/tests/TestWithQuestions';
 
 
 class App extends Component {
@@ -25,6 +26,10 @@ class App extends Component {
     const moodGrapher = (props) =>(
       <MoodGraph {...props}/>
     )
+
+    const testWithQuestions = (props) =>(
+      <TestWithQuestions {...props}/>
+    )
     return (
       <div className="App">
 
@@ -33,6 +38,7 @@ class App extends Component {
               <Route exact path="/" render={WelcomePageWrapper}/>
               <Route exact path="/users/:id" render={UserHomePageWrapper}/>
               <Route exact path="/users/:userId/snaps/:id" render={SnapPageWrapper}/>
+              <Route exact path="/snaps/:snapId/tests/:testId" render={testWithQuestions}/>
           </Switch>
         </Router>            
       </div>
