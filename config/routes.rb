@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'tests/index'
+    get 'tests/show'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   
@@ -12,13 +16,14 @@ Rails.application.routes.draw do
     get '/users/:user_id/moods/:mood_id/test_scores', to: 'test_scores#get_all_test_scores_for_user' 
     resources :users do
       resources :snaps
-      resources :test_scores
     end
 
     resources :snaps do
-      resources :test_scores
+      resources :tests
     end
 
-    resources :moods
+    resources :tests do
+      resources :questions
+    end
   end
 end

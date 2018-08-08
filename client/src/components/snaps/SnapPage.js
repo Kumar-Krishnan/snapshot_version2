@@ -9,10 +9,10 @@ class SnapPage extends Component {
     }
 
     componentDidMount = () =>{
-        this.fetchAllMoods()
+        this.fetchAllTests()
     }
 
-    fetchAllMoods = async() =>{
+    fetchAllTests = async() =>{
         let response = await axios.get(`/api/moods`)
         console.log(response.data)
         this.setState({moods: response.data})

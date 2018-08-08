@@ -1,9 +1,10 @@
+TestScore.destroy_all
 User.destroy_all
 Snap.destroy_all
 Test.destroy_all
 Question.destroy_all
 Answer.destroy_all
-TestScore.destroy_all
+
 
 
 beck_dep_inventory = Test.new
@@ -61,7 +62,7 @@ beck_question_5.answers.create(answer_text: "I feel quite guilty most of the tim
 beck_question_5.answers.create(answer_text: "I feel guilty all of the time. ", answer_value: 3)
 
 social_interaction_anxiety = Test.new
-social_interaction_anxiety.name = "Beck Depression Inventory"
+social_interaction_anxiety.name = "Social Interaction Anxiety Scale"
 social_interaction_anxiety.save
 
 social_interaction_anxiety_question_1 = Question.new
@@ -136,12 +137,21 @@ first_first_beck_answer = Answer.where(question_id: beck_question_1.id, answer_v
 first_second_beck_answer = Answer.where(question_id: beck_question_2.id, answer_value: 3)
 first_third_beck_answer = Answer.where(question_id: beck_question_3.id, answer_value: 3)
 first_fourth_beck_answer = Answer.where(question_id: beck_question_4.id, answer_value: 3)
+first_fifth_beck_answer = Answer.where(question_id: beck_question_5.id, answer_value: 3)
 
 dostoevsky1.answers << first_first_beck_answer
 dostoevsky1.answers << first_second_beck_answer
 dostoevsky1.answers << first_third_beck_answer
 dostoevsky1.answers << first_fourth_beck_answer
+dostoevsky1.answers << first_fifth_beck_answer
 dostoevsky1.save
+
+test_score_1 = TestScore.new
+test_score_1.score_total = 15
+test_score_1.user_id = dostoevsky.id
+test_score_1.snap_id = dostoevsky1.id
+test_score_1.test_id = beck_dep_inventory.id
+test_score_1.save
 
 dostoevsky2 = Snap.new
 dostoevsky2.user_id = dostoevsky.id
