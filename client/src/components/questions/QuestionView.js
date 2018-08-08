@@ -41,9 +41,11 @@ class QuestionView extends Component {
         this.setState({answerClicked: answer})
     }
 
-    // submitAnswer = () =>{
-        
-    // }
+    submitAnswer = async(event) =>{
+        event.preventDefault()
+        let answerSubmission = await axios.post(`/api/snaps/${this.props.snapId}/answers/${this.state.answerClicked.id}`)
+        this.fetchChosenAnswer()
+    }
 
 
     render() {
@@ -60,6 +62,7 @@ class QuestionView extends Component {
                 }
                 
                 <AnswersBuilder setAnswerClicked={this.setAnswerClicked} answerChosen={this.state.thereIsAnAnswerChosen} answers={this.state.answers}/>
+                <button onClick={this.submitAnswer}>Submit Answer</button>
             </div>
         );
     }
