@@ -20,16 +20,18 @@ class QuestionsBuilder extends Component {
         let response = await axios.get(`/api/tests/${this.props.testId}/total_questions`)
         let totalQuestions = response.data
         this.setState({totalQuestions})
-        console.log("total questions", this.state.totalQuestions)
     }
     addScoreTotal = (score) =>{
         let newScore = this.state.scoreTotal + score
         this.setState({scoreTotal: newScore})
     }
 
-    addScoreRecorded = () =>{
+    addScoreRecorded = async() =>{
         let newTally = this.state.numberOfScoresRecorded + 1
         this.setState({numberOfScoresRecorded: newTally})
+        if (this.state.totalQuestions === this.state.numberOfScoresRecorded && this.state.totalQuestions !== 0){
+            let response = await axios.post(`/api/users/${this.props.userId}/snaps/${this.props.snapId}/tests/${this.props.testId}/test_score/${this.state.scoreTotal}`)
+        }
     }
 
     // setTotalQuestions = async() =>{

@@ -20,7 +20,7 @@ class TestWithQuestions extends Component {
     render() {
         return (
             <div>
-                <QuestionsBuilder testId={this.props.match.params.testId} snapId={this.props.match.params.snapId} questions={this.state.questions}/>
+                <QuestionsBuilder userId={this.props.match.params.userId} testId={this.props.match.params.testId} snapId={this.props.match.params.snapId} questions={this.state.questions}/>
             </div>
         );
     }

@@ -31,7 +31,7 @@ class TestView extends Component {
                     {this.props.test.name}  
                     {
                         !this.state.testScoreExists ?
-                            <Link to={`/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
+                            <Link to={`/users/${this.props.userId}/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
                                 <h4> Take Test</h4>
                             </Link>
                         :null
