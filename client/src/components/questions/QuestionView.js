@@ -34,6 +34,7 @@ class QuestionView extends Component {
             this.setState({answerChosen})
             this.setState({thereIsAnAnswerChosen: true})
             this.props.addScoreTotal(answerChosen.answer_value)
+            this.props.addScoreRecorded()
         }
     }
 

@@ -16,14 +16,15 @@ class QuestionsBuilder extends Component {
     }
 
     addScoreRecorded = () =>{
-        
+        let newTally = this.state.numberOfScoresRecorded + 1
+        this.setState({numberOfScoresRecorded: newTally})
     }
     render() {
         if (this.props.questions === undefined) {
             return null
         }
         const questions = this.props.questions.map((question, i)=>{
-            return <QuestionView key={i}  addScore={this.addScore} order={i+1} question={question} snapId={this.props.snapId}/>
+            return <QuestionView key={i}  addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={i+1} question={question} snapId={this.props.snapId}/>
         })
         return (
             
