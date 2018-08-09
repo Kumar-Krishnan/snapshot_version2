@@ -4,6 +4,10 @@ class Api::TestsController < ApplicationController
     render json: @tests
   end
 
-  def show
+  def total_questions
+    @test = Test.find(params[:test_id])
+    @questions = @test.questions
+    questionLength = @questions.length
+    render json: questionLength
   end
 end

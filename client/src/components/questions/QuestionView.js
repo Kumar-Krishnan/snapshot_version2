@@ -22,14 +22,12 @@ class QuestionView extends Component {
         let response = await axios.get(`/api/questions/${this.props.question.id}/answers`)
         let answers = response.data
         this.setState({answers})
-        console.log(answers)
     }
 
 
     fetchChosenAnswer = async() =>{
         let response = await axios.get(`/api/snaps/${this.props.snapId}/questions/${this.props.question.id}/answer_chosen`)
         let answerChosen = response.data[0]
-        console.log("chosen answer", answerChosen)
         if (answerChosen !== undefined) {
             this.setState({answerChosen})
             this.setState({thereIsAnAnswerChosen: true})
