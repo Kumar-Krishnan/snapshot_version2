@@ -10,7 +10,6 @@ class QuestionView extends Component {
         },
         thereIsAnAnswerChosen: false,
         answerClicked: {
-
         }
     }
 
@@ -34,6 +33,7 @@ class QuestionView extends Component {
         if (answerChosen !== undefined) {
             this.setState({answerChosen})
             this.setState({thereIsAnAnswerChosen: true})
+            this.props.addScoreTotal(answerChosen.answer_value)
         }
     }
 
@@ -62,7 +62,12 @@ class QuestionView extends Component {
                 }
                 
                 <AnswersBuilder setAnswerClicked={this.setAnswerClicked} answerChosen={this.state.thereIsAnAnswerChosen} answers={this.state.answers}/>
-                <button onClick={this.submitAnswer}>Submit Answer</button>
+                {
+                   !this.state.thereIsAnAnswerChosen ? 
+                    <button onClick={this.submitAnswer}>Submit Answer</button>
+                    :null
+                }
+
             </div>
         );
     }
