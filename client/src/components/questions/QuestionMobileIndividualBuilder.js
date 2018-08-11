@@ -13,7 +13,8 @@ class QuestionMobileIndividualBuilder extends Component {
         scoreTotal: 0,
         numberOfScoresRecorded:0,
         totalQuestions: 0,
-        currentQuestion:0
+        currentQuestion:0,
+        lastQuestion: false
     }
 
         // imperfect solution, see way to do it on this paage instead of passing it down. Maybe async, maybe component will recieve props
@@ -41,8 +42,15 @@ class QuestionMobileIndividualBuilder extends Component {
     }
 
     moveToNextQuestion = () =>{
-        let newQuestion = this.state.currentQuestion + 1
-        this.setState({currentQuestion: newQuestion})
+        // zero indexed current question vs total is not zero indexed.
+        if(this.state.currentQuestion +1 !== this.state.totalQuestions){
+            let newQuestion = this.state.currentQuestion + 1
+            this.setState({currentQuestion: newQuestion})
+        }
+        else{
+            this.setState({lastQuestion:true})
+        }
+        
     }
 
     // setTotalQuestions = async() =>{
@@ -53,7 +61,7 @@ class QuestionMobileIndividualBuilder extends Component {
         }
 
         const questions = (
-            <QuestionMobileView  questionNumber={this.state.currentQuestion} addTallyTotalQuestions={this.addTallyTotalQuestions} moveToNextQuestion={this.moveToNextQuestion} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
+            <QuestionMobileView  lastQuestion={this.state.lastQuestion} questionNumber={this.state.currentQuestion} addTallyTotalQuestions={this.addTallyTotalQuestions} moveToNextQuestion={this.moveToNextQuestion} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
         )
         return (
             

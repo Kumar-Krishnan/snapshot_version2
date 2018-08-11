@@ -33,8 +33,10 @@ class QuestionMobileView extends Component {
             this.props.addScoreTotal(answerChosen.answer_value)
             this.props.addScoreRecorded()
             this.props.moveToNextQuestion()
-            this.fetchAnswers()
-            this.fetchChosenAnswer()
+            if(this.props.lastQuestion !== true){
+                this.fetchAnswers()
+                this.fetchChosenAnswer()
+            }   
         }
     }
 
