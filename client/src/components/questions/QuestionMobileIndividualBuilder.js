@@ -48,7 +48,7 @@ class QuestionMobileIndividualBuilder extends Component {
         }
 
         const questions = (
-            <QuestionMobileView   addTallyTotalQuestions={this.addTallyTotalQuestions} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={1} question={this.props.questions[0]} snapId={this.props.snapId}/>
+            <QuestionMobileView   addTallyTotalQuestions={this.addTallyTotalQuestions} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={1} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
         )
         return (
             
