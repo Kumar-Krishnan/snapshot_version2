@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import QuestionView from './QuestionView';
-import TestWithQuestions from '../tests/TestWithQuestions';
-import axios from '../../../node_modules/axios';
+import QuestionMobileView from './QuestionMobileView';
+import axios from 'axios'
+import styled from 'styled-components'
 
-class QuestionsBuilder extends Component {
+const IndividualQuestions = styled.div`
+    margin-top: 20 px;
+    border: 4px solid red;
+`
 
+class QuestionMobileIndividualBuilder extends Component {
     state = {
         scoreTotal: 0,
         numberOfScoresRecorded:0,
-        totalQuestions: 0
+        totalQuestions: 0,
+        currentQuestion:0
     }
 
         // imperfect solution, see way to do it on this paage instead of passing it down. Maybe async, maybe component will recieve props
@@ -38,20 +43,20 @@ class QuestionsBuilder extends Component {
     // setTotalQuestions = async() =>{
     // }
     render() {
-        if (this.props.questions === undefined) {
+        if (this.props.questions[1] === undefined) {
             return null
         }
 
-        const questions = this.props.questions.map((question, i)=>{
-            return <QuestionView key={i}  addTallyTotalQuestions={this.addTallyTotalQuestions} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={i+1} question={question} snapId={this.props.snapId}/>
-        })
+        const questions = (
+            <QuestionMobileView   addTallyTotalQuestions={this.addTallyTotalQuestions} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={1} question={this.props.questions[0]} snapId={this.props.snapId}/>
+        )
         return (
             
-            <div>
+            <IndividualQuestions>
                 {questions}
-            </div>
+            </IndividualQuestions>
         );
     }
 }
 
-export default QuestionsBuilder;
+export default QuestionMobileIndividualBuilder;
