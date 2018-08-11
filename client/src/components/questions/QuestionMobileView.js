@@ -30,9 +30,11 @@ class QuestionMobileView extends Component {
         let answerChosen = response.data[0]
         if (answerChosen !== undefined) {
             this.setState({answerChosen})
-            this.setState({thereIsAnAnswerChosen: true})
             this.props.addScoreTotal(answerChosen.answer_value)
             this.props.addScoreRecorded()
+            this.props.moveToNextQuestion()
+            this.fetchAnswers()
+            this.fetchChosenAnswer()
         }
     }
 
@@ -46,6 +48,8 @@ class QuestionMobileView extends Component {
         this.fetchChosenAnswer()
     }
 
+    
+
 
     render() {
         return (
@@ -56,7 +60,10 @@ class QuestionMobileView extends Component {
 
                 {
                     this.state.thereIsAnAnswerChosen ?
-                    <h5>{this.state.answerChosen.answer_text}</h5>
+                    <div>
+                        <h6>{this.props.currentQuestion}</h6>
+                        <h5>{this.state.answerChosen.answer_text}</h5>
+                    </div>
                     :null
                 }
                 

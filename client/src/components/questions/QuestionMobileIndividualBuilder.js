@@ -40,6 +40,11 @@ class QuestionMobileIndividualBuilder extends Component {
         }
     }
 
+    moveToNextQuestion = () =>{
+        let newQuestion = this.state.currentQuestion + 1
+        this.setState({currentQuestion: newQuestion})
+    }
+
     // setTotalQuestions = async() =>{
     // }
     render() {
@@ -48,7 +53,7 @@ class QuestionMobileIndividualBuilder extends Component {
         }
 
         const questions = (
-            <QuestionMobileView   addTallyTotalQuestions={this.addTallyTotalQuestions} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} order={1} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
+            <QuestionMobileView  questionNumber={this.state.currentQuestion} addTallyTotalQuestions={this.addTallyTotalQuestions} moveToNextQuestion={this.moveToNextQuestion} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
         )
         return (
             
