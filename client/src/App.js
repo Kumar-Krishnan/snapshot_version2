@@ -6,6 +6,7 @@ import SnapPage from './components/snaps/SnapPage';
 import Example from './components/Graph/Example';
 import MoodGraph from './components/Graph/MoodGraph';
 import TestWithQuestions from './components/tests/TestWithQuestions';
+import TestGraphBuilder from './components/graphs/TestGraphBuilder';
 
 
 class App extends Component {
@@ -30,6 +31,10 @@ class App extends Component {
     const testWithQuestions = (props) =>(
       <TestWithQuestions {...props}/>
     )
+
+    const testScoreGraphs = (props) => (
+      <TestGraphBuilder {...props}/>
+    )
     return (
       <div className="App">
 
@@ -39,6 +44,7 @@ class App extends Component {
               <Route exact path="/users/:id" render={UserHomePageWrapper}/>
               <Route exact path="/users/:userId/snaps/:id" render={SnapPageWrapper}/>
               <Route exact path="/users/:userId/snaps/:snapId/tests/:testId" render={testWithQuestions}/>
+              <Route exact path="/users/:userId/tests/:testId/graphOfScores" render={testScoreGraphs}/>
           </Switch>
         </Router>            
       </div>

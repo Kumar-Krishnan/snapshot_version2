@@ -9,6 +9,7 @@ import {
     LineChart
 } from "react-timeseries-charts";
 import UserMoods from './userMoods/UserMoods';
+import UserTestScoresLinker from './UserTestScoresLinker';
 
 class UserHomePage extends Component {
 
@@ -48,9 +49,10 @@ class UserHomePage extends Component {
     render() {
         return (
             <div>
+                <UserTestScoresLinker userId={this.props.match.params.id}/>
                 <button onClick ={this.createSnap}>Create New Snap</button>
                 <SnapBuilder userId={this.props.match.params.id} snaps={this.state.snaps}/>
-                <UserMoods moods={this.state.moods} userId={this.props.match.params.id}/>
+                
                 {/* <ChartContainer timeRange={[series1.timerange()]} width={800}>
                     <ChartRow height="200">
                         <YAxis id="axis1" label="AUD" min={0.5} max={1.5} width="60" type="linear" format="$,.2f"/>
