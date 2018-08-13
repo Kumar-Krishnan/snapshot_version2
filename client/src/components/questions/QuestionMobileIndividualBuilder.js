@@ -14,7 +14,8 @@ class QuestionMobileIndividualBuilder extends Component {
         numberOfScoresRecorded:0,
         totalQuestions: 0,
         currentQuestion:0,
-        lastQuestion: false
+        lastQuestion: false,
+        progress: 0
     }
 
         // imperfect solution, see way to do it on this paage instead of passing it down. Maybe async, maybe component will recieve props
@@ -35,10 +36,18 @@ class QuestionMobileIndividualBuilder extends Component {
     addScoreRecorded = async() =>{
         let newTally = this.state.numberOfScoresRecorded + 1
         this.setState({numberOfScoresRecorded: newTally})
+        this.setProgressBar()
         if (this.state.totalQuestions === this.state.numberOfScoresRecorded && this.state.totalQuestions !== 0){
             let response = await axios.post(`/api/users/${this.props.userId}/snaps/${this.props.snapId}/tests/${this.props.testId}/test_score/${this.state.scoreTotal}`)
             this.props.push(`/users/${this.props.userId}/snaps/${this.props.snapId}`)
         }
+    }
+
+    setProgressBar = () =>{
+        let total = this.state.totalQuestions
+        let current = this.state.currentQuestion + 1
+        let progress = (current/total) * 100
+        this.setState({progress})
     }
 
     moveToNextQuestion = () =>{
@@ -61,7 +70,7 @@ class QuestionMobileIndividualBuilder extends Component {
         }
 
         const questions = (
-            <QuestionMobileView  lastQuestion={this.state.lastQuestion} questionNumber={this.state.currentQuestion} addTallyTotalQuestions={this.addTallyTotalQuestions} moveToNextQuestion={this.moveToNextQuestion} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
+            <QuestionMobileView  percent={this.state.progress} lastQuestion={this.state.lastQuestion} questionNumber={this.state.currentQuestion} addTallyTotalQuestions={this.addTallyTotalQuestions} moveToNextQuestion={this.moveToNextQuestion} addScoreRecorded={this.addScoreRecorded} addScoreTotal={this.addScoreTotal} question={this.props.questions[this.state.currentQuestion]} snapId={this.props.snapId}/>
         )
         return (
             

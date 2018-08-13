@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from '../../../node_modules/axios';
 import AnswersBuilder from '../answers/AnswersBuilder';
+import styled from 'styled-components'
+import { Progress } from 'semantic-ui-react'
+
 
 class QuestionMobileView extends Component {
     state = {
@@ -10,9 +13,11 @@ class QuestionMobileView extends Component {
         },
         thereIsAnAnswerChosen: false,
         answerClicked: {
-        }
+        },
+        percent: 33
     }
 
+    
     componentDidMount = () =>{
         this.fetchAnswers()
         this.fetchChosenAnswer()
@@ -54,12 +59,13 @@ class QuestionMobileView extends Component {
 
 
     render() {
+        
         return (
             <div>
                 {/* <h2>{this.props.order}</h2> */}
                 
+                <Progress percent={this.props.percent} progress success />
                 <h3>{this.props.question.question_text}</h3>
-
                 {
                     this.state.thereIsAnAnswerChosen ?
                     <div>
