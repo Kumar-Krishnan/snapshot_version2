@@ -14,4 +14,12 @@ class Api::TestScoresController < ApplicationController
         newScore.test_id = params[:test_id]
         newScore.save
     end
+
+    def get_all_scores_for_specific_test_for_user
+        user = User.find(params[:user_id])
+        @test = Test.find(params[:test_id])
+        test_scores = TestScore.where(test_id: @test.id, user_id: user.id)
+        render json: test_scores
+
+    end
 end

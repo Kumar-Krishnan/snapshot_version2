@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     post '/snaps/:snap_id/answers/:answer_id', to: 'answers#submit_answer_for_snap'
     get '/tests/:test_id/total_questions', to: 'tests#total_questions'
     post '/users/:user_id/snaps/:snap_id/tests/:test_id/test_score/:test_score_total', to: 'test_scores#post_new_score'
+    get '/users/:user_id/tests/:test_id/scores', to: 'test_scores#get_all_scores_for_specific_test_for_user'
     resources :users do
       resources :snaps
     end
