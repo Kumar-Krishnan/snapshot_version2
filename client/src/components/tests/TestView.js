@@ -28,6 +28,7 @@ class TestView extends Component {
         return (
             
                 <div>
+                    <br/>
                     {this.props.test.name}  
                     {
                         !this.state.testScoreExists ?

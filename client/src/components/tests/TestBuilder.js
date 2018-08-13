@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TestView from './TestView';
+import {Link} from 'react-router-dom'
 
 class TestBuilder extends Component {
     render() {
@@ -11,6 +12,9 @@ class TestBuilder extends Component {
         })
         return (
             <div>
+                <Link to={`/users/${this.props.userId}`}>
+                        Back to User Page
+                </Link>
                 {tests}
             </div>
         );
