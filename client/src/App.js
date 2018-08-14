@@ -10,8 +10,10 @@ import TestGraphBuilder from './components/graphs/TestGraphBuilder';
 import styled from 'styled-components'
 
 
-const logoBox = styled.div`
-  text-align:center;
+const LogoBox = styled.div`
+  background-color: #66cc66;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px;
 `
 
 class App extends Component {
@@ -42,9 +44,9 @@ class App extends Component {
     )
     return (
       <div className="App">
-        <logoBox>
+        <LogoBox>
           <h1 className="logo"> Snap Shots</h1>
-        </logoBox>
+        </LogoBox>
         <Router>
           <Switch>
               <Route exact path="/" render={WelcomePageWrapper}/>
