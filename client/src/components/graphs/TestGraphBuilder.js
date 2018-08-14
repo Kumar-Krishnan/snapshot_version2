@@ -49,7 +49,7 @@ class TestGraphBuilder extends Component {
             let todayDateTime = today.getTime()
             let scoreTime = Date.parse(score.created_at)
             let timeDiff = Math.abs(todayDateTime - scoreTime)
-            let hoursDiff = Math.floor(timeDiff / (1000 * 3600)*-1)
+            let hoursDiff = Math.floor(timeDiff / (1000 * 60)*-1)
             console.log(hoursDiff)
             return hoursDiff
         })
@@ -110,7 +110,7 @@ class TestGraphBuilder extends Component {
                 <button onClick={this.displayByWeeks}>
                     Measure By Weeks
                 </button>
-                <TestGraphView x={this.state.x} test={this.state.test} y={this.state.y}/>
+                <TestGraphView x={this.state.x} max={this.state.test.max_score} test={this.state.test} y={this.state.y}/>
             </div>
         );
     }

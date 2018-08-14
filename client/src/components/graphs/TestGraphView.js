@@ -8,7 +8,7 @@ class TestGraphView extends Component {
             <div>
                 <Plot
                 data={[
-                {type: 'bar', x: this.props.x, y: this.props.y},
+                {type: 'scatter', mode: 'markers', marker: {"size": 14}, x: this.props.x, y: this.props.y},
                 ]}
                 layout={ {
                     width: 700,
@@ -17,7 +17,8 @@ class TestGraphView extends Component {
                         title: 'Hours'
                     },
                     yaxis: {
-                        title: 'Test score'
+                        title: 'Test score',
+                        range: [0,this.props.max]
                     },
                     title: `${this.props.test.name} scores over time`} }
                 />

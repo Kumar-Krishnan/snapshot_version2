@@ -40,7 +40,7 @@ class TestView extends Component {
                     
                     {
                         this.state.testScoreExists ?
-                            <h5>{this.state.testScore.score_total}</h5>
+                            <h5>{this.state.testScore.score_total} out of {this.props.test.max_score}</h5>
                         :null
                     }
                 </div>

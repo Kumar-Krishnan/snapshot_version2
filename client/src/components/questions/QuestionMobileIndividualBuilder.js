@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 const IndividualQuestions = styled.div`
     margin-top: 20 px;
-    border: 4px solid red;
 `
 
 class QuestionMobileIndividualBuilder extends Component {

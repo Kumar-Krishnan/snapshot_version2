@@ -7,7 +7,12 @@ import Example from './components/Graph/Example';
 import MoodGraph from './components/Graph/MoodGraph';
 import TestWithQuestions from './components/tests/TestWithQuestions';
 import TestGraphBuilder from './components/graphs/TestGraphBuilder';
+import styled from 'styled-components'
 
+
+const logoBox = styled.div`
+  text-align:center;
+`
 
 class App extends Component {
   render() {
@@ -37,7 +42,9 @@ class App extends Component {
     )
     return (
       <div className="App">
-
+        <logoBox>
+          <h1 className="logo"> Snap Shots</h1>
+        </logoBox>
         <Router>
           <Switch>
               <Route exact path="/" render={WelcomePageWrapper}/>
@@ -46,7 +53,7 @@ class App extends Component {
               <Route exact path="/users/:userId/snaps/:snapId/tests/:testId" render={testWithQuestions}/>
               <Route exact path="/users/:userId/tests/:testId/graphOfScores" render={testScoreGraphs}/>
           </Switch>
-        </Router>            
+        </Router>         
       </div>
     );
   }

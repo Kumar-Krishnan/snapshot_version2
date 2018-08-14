@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { Button } from 'semantic-ui-react'
 
-const ClickableAnswers = styled.div`
-    border: 1px solid black
+const ClickableAnswers = styled(Button)`
+    &&&{
+        display:block;
+        background-color: rgb(200,200,200);
+    }
+   
 `
 class AnswerView extends Component {
 
@@ -21,9 +26,9 @@ class AnswerView extends Component {
 
                 {
                     !this.props.answerChosen ?
-                        <ClickableAnswers>
-                            <h3 onClick={this.triggerSetAnswerClicked}>{this.props.answer.answer_text}</h3>
-                        </ClickableAnswers>      
+                        <Button fluid onClick={this.triggerSetAnswerClicked}>
+                            <h3>{this.props.answer.answer_text}</h3>
+                        </Button>      
                     :null
                 }
                 

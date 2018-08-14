@@ -9,6 +9,7 @@ Answer.destroy_all
 
 beck_dep_inventory = Test.new
 beck_dep_inventory.name = "Beck Depression Inventory"
+beck_dep_inventory.max_score = 63
 beck_dep_inventory.save
 
 beck_question_1 = Question.new
@@ -63,6 +64,7 @@ beck_question_5.answers.create(answer_text: "I feel guilty all of the time. ", a
 
 social_interaction_anxiety = Test.new
 social_interaction_anxiety.name = "Social Interaction Anxiety Scale"
+social_interaction_anxiety.max_score = 80
 social_interaction_anxiety.save
 
 social_interaction_anxiety_question_1 = Question.new

@@ -3,7 +3,16 @@ import axios from '../../../node_modules/axios';
 import AnswersBuilder from '../answers/AnswersBuilder';
 import styled from 'styled-components'
 import { Progress } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
+
+const QuestionBox = styled.div`
+    text-align: center;
+`
+
+const SubmitBox = styled.div`
+    text-align: center;
+`
 
 class QuestionMobileView extends Component {
     state = {
@@ -65,7 +74,9 @@ class QuestionMobileView extends Component {
                 {/* <h2>{this.props.order}</h2> */}
                 
                 <Progress percent={this.props.percent} progress success />
-                <h3>{this.props.question.question_text}</h3>
+                <QuestionBox>
+                    <h3>{this.props.question.question_text}</h3>
+                </QuestionBox>
                 {
                     this.state.thereIsAnAnswerChosen ?
                     <div>
@@ -78,7 +89,9 @@ class QuestionMobileView extends Component {
                 <AnswersBuilder setAnswerClicked={this.setAnswerClicked} answerChosen={this.state.thereIsAnAnswerChosen} answers={this.state.answers}/>
                 {
                    !this.state.thereIsAnAnswerChosen ? 
-                    <button onClick={this.submitAnswer}>Submit Answer</button>
+                    <SubmitBox>
+                            <Button positive onClick={this.submitAnswer}>Submit Answer</Button>
+                    </SubmitBox>
                     :null
                 }
 
