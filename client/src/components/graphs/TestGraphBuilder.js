@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import TestGraphView from './TestGraphView';
+import styled from 'styled-components'
+import { Icon } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+
+const NavBox = styled.div`
+    display: grid;
+    grid-template-columns: 40vw 40vw;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 2px;
+    box-shadow: 1px 1px 1px 1px;
+`
 
 class TestGraphBuilder extends Component {
     state = {
@@ -101,6 +113,19 @@ class TestGraphBuilder extends Component {
     render() {
         return (
             <div>
+                <NavBox>
+                    <div>
+                        <Link to={`/users/${this.props.match.params.userId}`}>
+                            <Icon name="home" size="big"/>
+                        </Link>
+                    </div>
+
+                    <div> 
+                        <Link to={`/users/${this.props.match.params.userId}/testAnalytics`}>
+                            <Icon name="line graph" size="big"/>
+                        </Link>
+                    </div>
+                </NavBox>
                 <button onClick={this.displayByHours}>
                     Measure By Hours
                 </button>
