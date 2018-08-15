@@ -45,7 +45,7 @@ class TestGraphBuilder extends Component {
             return score.score_total
         })
         await this.setState({scoresArray})
-        this.displayByHoursNonClickVersion()
+        this.displayByMinsNonClickVersion()
         this.setState({y})
         console.log(x, y)
     }
@@ -54,7 +54,7 @@ class TestGraphBuilder extends Component {
         
     }
 
-    displayByHoursNonClickVersion = (event) =>{
+    displayByMinsNonClickVersion = (event) =>{
         let x = []
         x = this.state.scoresArray.map((score)=>{
             let today = new Date()
@@ -62,6 +62,20 @@ class TestGraphBuilder extends Component {
             let scoreTime = Date.parse(score.created_at)
             let timeDiff = Math.abs(todayDateTime - scoreTime)
             let hoursDiff = Math.floor(timeDiff / (1000 * 60)*-1)
+            console.log(hoursDiff)
+            return hoursDiff
+        })
+        this.setState({x})
+    } 
+
+    displayByHoursNonClickVersion = (event) =>{
+        let x = []
+        x = this.state.scoresArray.map((score)=>{
+            let today = new Date()
+            let todayDateTime = today.getTime()
+            let scoreTime = Date.parse(score.created_at)
+            let timeDiff = Math.abs(todayDateTime - scoreTime)
+            let hoursDiff = Math.floor(timeDiff / (1000 * 3600)*-1)
             console.log(hoursDiff)
             return hoursDiff
         })
@@ -126,15 +140,15 @@ class TestGraphBuilder extends Component {
                         </Link>
                     </div>
                 </NavBox>
-                <button onClick={this.displayByHours}>
-                    Measure By Hours
+                {/* <button onClick={this.displayByHours}>
+                    Past 10 minutes
                 </button>
                 <button onClick={this.displayByDays}>
-                    Measure By Days
+                    Past 30 minutes
                 </button>
                 <button onClick={this.displayByWeeks}>
-                    Measure By Weeks
-                </button>
+                    Past 180 minutes
+                </button> */}
                 <TestGraphView x={this.state.x} max={this.state.test.max_score} test={this.state.test} y={this.state.y}/>
             </div>
         );
