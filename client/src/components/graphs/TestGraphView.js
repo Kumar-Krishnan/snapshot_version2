@@ -102,7 +102,7 @@ class TestGraphView extends Component {
                     height: 500,
                     xaxis: {
                         title: 'Mins',
-                        range: [0, this.state.xRange]
+                        range: [this.state.xRange, 0]
                     },
                     yaxis: {
                         title: 'Test score',

@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
+import styled from 'styled-components'
 
+const Wrapper = styled.div`
+    margin-left: 20px;
+    margin-right: 25px;
+    text-align: center;
+    
+    .form{
+        border: 3px solid teal;
+        border-radius: 20px;
+        margin-top: 15px;
+        label{
+            font-size: 30px;
+        }
+    }
+    
+`
 
+const ButtonHolder = styled.div`
+    text-align: center;
+    padding-bottom: 10px;
+`
+const TestUserButtonHolder = styled(ButtonHolder)`
+    &&&{
+        margin-top: 30px;
+    }
+
+`
 class WelcomePage extends Component {
 
     state ={
@@ -34,7 +60,9 @@ class WelcomePage extends Component {
     }
 
     handleSubmitLogin = (event) =>{
-        event.preventDefault()
+        if (event !== undefined){
+            event.preventDefault()
+        }
         const targetUser = this.state.users.find((user)=>{
             return user.name === this.state.userName
         })
@@ -55,9 +83,14 @@ class WelcomePage extends Component {
         let newAccount = response.data
         this.props.history.push(`/users/${newAccount.id}`)
     }
+
+    testUserLogin = async() =>{
+        await this.setState({userName: "Fyodor Dostoevsky"})
+        this.handleSubmitLogin()
+    }
     render() {
         return (
-            <div>
+            <Wrapper>
                 <Form onSubmit={this.handleSubmitLogin}>
                     <Form.Field>
                         <label>User Name</label>
@@ -68,7 +101,9 @@ class WelcomePage extends Component {
                     <label>Password</label>
                     <input placeholder='Password' />
                     </Form.Field>
-                    <Button type='submit'>Submit</Button>
+                    <ButtonHolder>
+                        <Button color="blue" type='submit'>Submit</Button>
+                    </ButtonHolder>
                 </Form>
 
                 <Form onSubmit={this.handleSubmitNewUser}>
@@ -81,9 +116,16 @@ class WelcomePage extends Component {
                     <label>Password</label>
                     <input placeholder='Password' />
                     </Form.Field>
-                    <Button type='submit'>Submit</Button>
+                    <ButtonHolder>
+                        <Button color="blue" type='submit'>Submit</Button>
+                    </ButtonHolder>
                 </Form>
-            </div>
+                <TestUserButtonHolder>
+                    <Button onClick={this.testUserLogin} fluid color="blue">
+                        Login With Test User
+                    </Button>
+                </TestUserButtonHolder>
+            </Wrapper>
         );
     }
 }
