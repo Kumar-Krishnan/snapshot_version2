@@ -226,7 +226,7 @@ beck_question_21.answers.create(answer_text: "I have lost interest in sex comple
 
 social_interaction_anxiety = Test.new
 social_interaction_anxiety.name = "Social Interaction Anxiety Scale"
-social_interaction_anxiety.max_score = 80
+social_interaction_anxiety.max_score = 20
 social_interaction_anxiety.save
 
 social_interaction_anxiety_question_1 = Question.new
