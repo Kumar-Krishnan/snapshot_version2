@@ -11,6 +11,7 @@ const TestHeader = styled.div`
     text-align: center;
     font-size: 20px;
     margin-top: 15px;
+    margin-bottom: 10px;
 `
 
 const NavBox = styled.div`
@@ -21,7 +22,10 @@ const NavBox = styled.div`
     margin-top: 2px;
     box-shadow: 1px 1px 1px 1px;
 `
-
+const Wrapper = styled.div`
+    margin-left: 10px
+    margin-right: 15px
+`
 class TestWithQuestions extends Component {
     state ={
         questions: [],
@@ -64,12 +68,13 @@ class TestWithQuestions extends Component {
                     </div>
                 </NavBox>
 
-                
+                <Wrapper>
                 {/* <QuestionsBuilder push={this.props.history.push} userId={this.props.match.params.userId} testId={this.props.match.params.testId} snapId={this.props.match.params.snapId} questions={this.state.questions}/> */}
                 <TestHeader>
-                    {this.state.test.name}
+                    <h2>{this.state.test.name}</h2>
                 </TestHeader>
                 <QuestionMobileIndividualBuilder push={this.props.history.push} userId={this.props.match.params.userId} testId={this.props.match.params.testId} snapId={this.props.match.params.snapId} questions={this.state.questions}/>
+                </Wrapper>
             </div>
         );
     }

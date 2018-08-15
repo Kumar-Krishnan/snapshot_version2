@@ -8,10 +8,15 @@ import { Button } from 'semantic-ui-react'
 
 const QuestionBox = styled.div`
     text-align: center;
+    margin-bottom: 10px;
 `
 
 const SubmitBox = styled.div`
     text-align: center;
+    margin-top: 20px;
+`
+const Warning = styled.h4`
+    color: red;
 `
 
 class QuestionMobileView extends Component {
@@ -22,8 +27,12 @@ class QuestionMobileView extends Component {
         },
         thereIsAnAnswerChosen: false,
         answerClicked: {
+            value: 0
         },
-        percent: 33
+        previousAnswer: {
+        },
+        percent: 33,
+        triedToSubmitEmptyAnswer: false 
     }
 
     
@@ -60,8 +69,17 @@ class QuestionMobileView extends Component {
 
     submitAnswer = async(event) =>{
         event.preventDefault()
-        let answerSubmission = await axios.post(`/api/snaps/${this.props.snapId}/answers/${this.state.answerClicked.id}`)
-        this.fetchChosenAnswer()
+        if (this.state.answerClicked !== this.state.previousAnswer && this.state.answerClicked.value !== 0) {
+            this.setState({previousAnswer: this.state.answerClicked})
+            let answerSubmission = await axios.post(`/api/snaps/${this.props.snapId}/answers/${this.state.answerClicked.id}`)
+            this.fetchChosenAnswer()
+            if (this.state.triedToSubmitEmptyAnswer === true){
+                this.setState({triedToSubmitEmptyAnswer: false})
+            }
+        }
+        else{
+            this.setState({triedToSubmitEmptyAnswer: true})
+        }
     }
 
     
@@ -74,6 +92,12 @@ class QuestionMobileView extends Component {
                 {/* <h2>{this.props.order}</h2> */}
                 
                 <Progress value={this.props.currentQuestion+1} total={this.props.totalQuestions} progress='ratio' success />
+
+                {
+                    this.state.triedToSubmitEmptyAnswer ?
+                    <Warning>Please choose one of the answers below first.</Warning>
+                    :null
+                }
                 <QuestionBox>
                     <h3>{this.props.question.question_text}</h3>
                 </QuestionBox>

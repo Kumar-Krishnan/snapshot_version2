@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const TestBox = styled.div`
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+`
+const Wrapper = styled.div `
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 10px;
+    box-shadow: 1px 1px 1px 1px;
+    padding-bottom: 10px;
+`
 
 class TestView extends Component {
 
@@ -27,23 +43,25 @@ class TestView extends Component {
     render() {
         return (
             
-                <div>
+                <Wrapper>
                     <br/>
-                    {this.props.test.name}  
+                    <TestBox>
+                        {this.props.test.name}
+                    </TestBox> 
                     {
                         !this.state.testScoreExists ?
                             <Link to={`/users/${this.props.userId}/snaps/${this.props.snapId}/tests/${this.props.test.id}`}>
-                                <h4> Take Test</h4>
+                                <h4> Take the Test</h4>
                             </Link>
                         :null
                     }
                     
                     {
                         this.state.testScoreExists ?
-                            <h5>{this.state.testScore.score_total} out of {this.props.test.max_score}</h5>
+                            <h4>You scored {this.state.testScore.score_total} out of {this.props.test.max_score}</h4>
                         :null
                     }
-                </div>
+                </Wrapper>
             
         );
     }

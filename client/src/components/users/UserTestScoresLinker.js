@@ -31,7 +31,6 @@ class UserTestScoresLinker extends Component {
         })
         return (
             <div>
-                Yolo
                 {links}
             </div>
         );

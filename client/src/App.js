@@ -8,6 +8,7 @@ import MoodGraph from './components/Graph/MoodGraph';
 import TestWithQuestions from './components/tests/TestWithQuestions';
 import TestGraphBuilder from './components/graphs/TestGraphBuilder';
 import styled from 'styled-components'
+import TestAnalyticsLinker from './components/analytics/TestAnalyticsLinker';
 
 
 const LogoBox = styled.div`
@@ -42,6 +43,10 @@ class App extends Component {
     const testScoreGraphs = (props) => (
       <TestGraphBuilder {...props}/>
     )
+
+    const testsAnalytics = (props)=>(
+      <TestAnalyticsLinker {...props}/>
+    )
     return (
       <div className="App">
         <LogoBox>
@@ -54,6 +59,7 @@ class App extends Component {
               <Route exact path="/users/:userId/snaps/:id" render={SnapPageWrapper}/>
               <Route exact path="/users/:userId/snaps/:snapId/tests/:testId" render={testWithQuestions}/>
               <Route exact path="/users/:userId/tests/:testId/graphOfScores" render={testScoreGraphs}/>
+              <Route exact path="/users/:id/testAnalytics" render={testsAnalytics}/>
           </Switch>
         </Router>         
       </div>

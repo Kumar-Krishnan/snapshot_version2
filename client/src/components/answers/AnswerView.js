@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
+import styled from 'styled-components' 
 
-const ClickableAnswers = styled(Button)`
-    &&&{
-        display:block;
-        background-color: rgb(200,200,200);
-    }
-   
+const Wrapper = styled.div`
+    margin-bottom: 8px;
 `
+
 class AnswerView extends Component {
 
     triggerSetAnswerClicked = (event) =>{
@@ -17,7 +14,7 @@ class AnswerView extends Component {
     }
     render() {
         return (
-            <div>
+            <Wrapper>
                 {
                     this.props.answerChosen ?
                         <h4>{this.props.answer.answer_text}</h4>
@@ -32,7 +29,7 @@ class AnswerView extends Component {
                     :null
                 }
                 
-            </div>
+            </Wrapper>
         );
     }
 }
