@@ -7,6 +7,8 @@ import { isDate } from '../../../node_modules/moment';
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import { Icon } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
+
 
 
 const NavBox = styled.div`
@@ -18,6 +20,13 @@ const NavBox = styled.div`
     box-shadow: 1px 1px 1px 1px;
 `
 
+const ButtonContainer = styled.div`
+    text-align: center;
+    margin-top: 20px;
+`
+const ChosenNavLinkGrayed = styled.div`
+    background-color: rgba(0,0,0,.2);
+`
 class UserHomePage extends Component {
 
     state = {
@@ -98,16 +107,19 @@ class UserHomePage extends Component {
         return (
             <div>
                 <NavBox>
-                    <div>
-                    <Link to={`/users/${this.props.match.params.userId}`}>
+                    <ChosenNavLinkGrayed>
                         <Icon name="home" size="big"/>
-                    </Link>
-                    </div>
+                    </ChosenNavLinkGrayed>
 
                     <div>
-                        <Link to={`/users/${this.props.match.params.userId}/snaps/${this.props.match.params.snapId}`}>
-                            <Icon name="camera retro" size="big"/>
-                        </Link>
+                        {
+                            this.state.snapExistsForThisMinute ?
+                            <Link to={`/users/${this.props.match.params.id}/snaps/${this.state.nowSnapId}`}>
+                                <Icon name="camera retro" size="big"/>
+                            </Link>
+                            :
+                            <Icon color="blue" onClick={this.createSnap} name="camera retro" size="big"/>
+                        }
                     </div>
 
                     <div> 
@@ -118,14 +130,19 @@ class UserHomePage extends Component {
                 </NavBox>
                 {
                     !this.state.snapExistsForThisMinute ?
-                        <button onClick ={this.createSnap}>Create New Snap</button>
+                        <ButtonContainer>
+                            <Button  color="olive" onClick ={this.createSnap}>Create New Snap</Button>
+                        </ButtonContainer>   
                     :null
                 }
                 {
                     this.state.snapExistsForThisMinute ?
-                        <Link to={`/users/${this.props.match.params.id}/snaps/${this.state.nowSnapId}`}>
-                            <button> Edit Current Snap</button>
-                        </Link>
+                        <ButtonContainer>
+                            <Link to={`/users/${this.props.match.params.id}/snaps/${this.state.nowSnapId}`}>
+                                <Button  color="blue"> Edit Current Snap</Button>
+                            </Link>
+                        </ButtonContainer>
+                        
                     :null
                 }
                 <SnapBuilder checkSnapTimeAgainstNow={this.checkSnapTimeAgainstNow} userId={this.props.match.params.id} snaps={this.state.snaps}/>
