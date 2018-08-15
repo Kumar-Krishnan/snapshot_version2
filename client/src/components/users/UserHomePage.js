@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import SnapBuilder from '../snaps/SnapBuilder'
-import {
-    Charts,
-    ChartContainer,
-    ChartRow,
-    YAxis,
-    LineChart
-} from "react-timeseries-charts";
 import UserMoods from './userMoods/UserMoods';
 import UserTestScoresLinker from './UserTestScoresLinker';
+import { isDate } from '../../../node_modules/moment';
+import {Link} from 'react-router-dom'
 
 class UserHomePage extends Component {
 
     state = {
         user: {},
         snaps: [],
+        date: "",
+        time: "",
+        snapExistsForThisMinute: false,
+        nowSnapId: 0
         // moods: []
     }
 
-    componentDidMount = () =>{
+    componentDidMount = async() =>{
+        this.storeTodayDateAndMin()
         this.fetchUserSnapsAndTests()
         // this.fetchAllMoods()
     }
@@ -30,6 +30,35 @@ class UserHomePage extends Component {
         console.log(snaps.data)
     }
 
+    storeTodayDateAndMin = () =>{
+        let now = new Date()
+        let nowString = String(now)
+        // let splitDateTime = nowString.split("")
+        // let date = splitDateTime.slice(0,10).join("")
+        // let time = splitDateTime.slice(12,16).join("")
+        // this.setState({date, time})
+        let nowYear = String(now.getFullYear())
+        let nowMonth = now.getMonth() + 1
+        if (nowMonth < 10) {
+            nowMonth = "0" + nowMonth
+        }
+        let nowDate = String(now.getUTCDate())
+        if (nowDate < 10) {
+            nowDate = "0" + nowDate
+        }
+        let nowHour = String(now.getUTCHours())
+        if (nowHour < 10) {
+            nowHour = "0" + nowHour
+        }
+        let nowMinute = String(now.getMinutes())
+        if (nowMinute < 10) {
+            nowMinute = "0" + nowMinute
+        }
+        let nowDateState = `${nowYear}-${nowMonth}-${nowDate}`
+        let nowTimeState = `${nowHour}:${nowMinute}`
+        this.setState({date: nowDateState, time: nowTimeState})
+        console.log(nowDateState, nowTimeState)
+    }
     // fetchAllMoods = async() =>{
     //     let response = await axios.get(`/api/moods`)
     //     console.log(response.data)
@@ -46,12 +75,30 @@ class UserHomePage extends Component {
 
         this.props.history.push(`/users/${userId}/snaps/${newSnap.id}`)
     }
+
+    checkSnapTimeAgainstNow = (date, time, snapId) =>{
+        if (date === this.state.date && time === this.state.time){
+            this.setState({snapExistsForThisMinute: true})
+            this.setState({nowSnapId: snapId})
+        }
+    }
     render() {
         return (
             <div>
                 <UserTestScoresLinker userId={this.props.match.params.id}/>
-                <button onClick ={this.createSnap}>Create New Snap</button>
-                <SnapBuilder userId={this.props.match.params.id} snaps={this.state.snaps}/>
+                {
+                    !this.state.snapExistsForThisMinute ?
+                        <button onClick ={this.createSnap}>Create New Snap</button>
+                    :null
+                }
+                {
+                    this.state.snapExistsForThisMinute ?
+                        <Link to={`/users/${this.props.match.params.id}/snaps/${this.state.nowSnapId}`}>
+                            <button> Edit Current Snap</button>
+                        </Link>
+                    :null
+                }
+                <SnapBuilder checkSnapTimeAgainstNow={this.checkSnapTimeAgainstNow} userId={this.props.match.params.id} snaps={this.state.snaps}/>
                 
                 {/* <ChartContainer timeRange={[series1.timerange()]} width={800}>
                     <ChartRow height="200">

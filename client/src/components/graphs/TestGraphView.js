@@ -11,7 +11,7 @@ class TestGraphView extends Component {
                 {type: 'scatter', mode: 'markers', marker: {"size": 14}, x: this.props.x, y: this.props.y},
                 ]}
                 layout={ {
-                    width: 700,
+                    width: 400,
                     height: 500,
                     xaxis: {
                         title: 'Hours'

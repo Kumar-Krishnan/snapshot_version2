@@ -9,7 +9,7 @@ class Snap extends Component {
             return null
         }
         const snaps = this.props.snaps.map((snap, i)=>{
-            return <SnapView key={i} snap={snap} userId={this.props.userId}/>
+            return <SnapView key={i} checkSnapTimeAgainstNow={this.props.checkSnapTimeAgainstNow} snap={snap} userId={this.props.userId}/>
         })
         return (
             <div>
