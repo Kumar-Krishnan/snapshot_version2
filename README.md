@@ -2,7 +2,7 @@
 
 ## Velocity App
 
-* Heroku Link: https://snapshots-psychology-version2.herokuapp.com/
+* Heroku Link: https://snapshot-psychology-version2.herokuapp.com/
 * Trello Board: https://trello.com/b/LBS2leXg/snapshot
 * Portfolio: https://thekumarsite.wordpress.com/
 
