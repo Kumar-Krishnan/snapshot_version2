@@ -13,18 +13,6 @@ class Snap extends Component {
         })
         return (
             <div>
-               {/* {
-                    this.props.snaps.map((snap, i) => {
-                        return (
-                            <Link to={`users/${this.props.userId}/snaps/${snap.id}`}>
-                                <div key={`${snap.created_at}_{snap.id`}>
-                                    <h1>{snap.created_at}</h1> 
-                                </div>
-                            </Link>
-
-                        )
-                    })             
-                } */}
                 {snaps}
             </div>
         );

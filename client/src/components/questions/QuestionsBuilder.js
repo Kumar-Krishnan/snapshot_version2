@@ -11,7 +11,6 @@ class QuestionsBuilder extends Component {
         totalQuestions: 0
     }
 
-        // imperfect solution, see way to do it on this paage instead of passing it down. Maybe async, maybe component will recieve props
     componentDidMount = () =>{
         this.fetchTotalQuestions()
     }

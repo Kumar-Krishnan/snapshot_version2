@@ -6,13 +6,7 @@ class AnswersBuilder extends Component {
         answerChosen:{}
     }
 
-    // componentDidMount = () =>{
-    //     this.fetchChosenAnswer()
-    // }
-
-    // fetchChosenAnswer = async() =>{
-        
-    // }
+    
     render() {
         if (this.props.answers === undefined) {
             return null

@@ -49,9 +49,7 @@ class QuestionView extends Component {
 
     render() {
         return (
-            <div>
-                {/* <h2>{this.props.order}</h2> */}
-                
+            <div>                
                 <h3>{this.props.question.question_text}</h3>
 
                 {

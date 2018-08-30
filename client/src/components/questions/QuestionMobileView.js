@@ -88,9 +88,7 @@ class QuestionMobileView extends Component {
     render() {
     
         return (
-            <div>
-                {/* <h2>{this.props.order}</h2> */}
-                
+            <div>                
                 <Progress value={this.props.currentQuestion+1} total={this.props.totalQuestions} progress='ratio' success />
 
                 {

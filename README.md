@@ -1,10 +1,9 @@
-# WDI-Project 3
-
-## Velocity App
+# Velocity App
 
 * Heroku Link: https://snapshot-psychology-version2.herokuapp.com/
 * Trello Board: https://trello.com/b/LBS2leXg/snapshot
-* Portfolio: https://thekumarsite.wordpress.com/
+* Portfolio: https://kumar-krishnan.github.io/
+* Version One: https://github.com/Kumar-Krishnan/Snapshot
 
 ## Technologies Used: 
 
@@ -18,7 +17,7 @@
 * Ruby
 * Rails
 * Active Record
-* SQL
+* PostgreSQL
 * Postman
 * Jbuilder (for JSON formatting)
 
