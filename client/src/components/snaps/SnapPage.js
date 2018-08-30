@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import MoodBuilder from '../moods/MoodBuilder';
 import TestBuilder from '../tests/TestBuilder';
 // a
 class SnapPage extends Component {
