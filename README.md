@@ -47,7 +47,7 @@ Moving from NoSQL to SQL, I was able to use references to accomplish complex fun
 ![](https://i.imgur.com/Fks2PH4l.png)
 ![](https://i.imgur.com/82IFoJRl.png)
 
-# ERD:
-![](https://i.imgur.com/AgnW8bxl.png)
+## ERD:
+![](https://i.imgur.com/AgnW8bx.png)
 
 
