@@ -40,7 +40,6 @@ Moving from NoSQL to SQL, I was able to use references to accomplish complex fun
 
 * Utilize redux to manage state
 
-* Allow users to track the 
 ## WireFrames Used:
 
 ![](https://i.imgur.com/w4du59pl.png)
